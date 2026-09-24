@@ -34,7 +34,7 @@ function HeroSection({ avatarList }: HeroSectionProps) {
                   initial={{ opacity: 0, y: 32 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, ease: "easeInOut" }}
-                  className="text-5xl leading-14 font-medium md:text-7xl md:leading-20 lg:text-8xl lg:leading-24"
+                  className="text-3xl leading-tight font-medium sm:text-5xl sm:leading-14 md:text-7xl md:leading-20 lg:text-8xl lg:leading-24"
                 >
                   {t("title")}{" "}
                   <span

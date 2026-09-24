@@ -49,7 +49,7 @@ function CartItemRow({ item }: { item: CartItem }) {
           <div className="flex items-center rounded-full border border-border bg-muted/50 p-1">
             <button
               onClick={() => updateQuantity(item.id, item.quantity - 1)}
-              className="flex size-6 items-center justify-center rounded-full transition-colors hover:bg-background"
+              className="relative flex size-9 items-center justify-center rounded-full transition-colors after:absolute after:-inset-1 after:content-[''] hover:bg-background sm:size-6"
             >
               <Minus className="size-3" />
             </button>
@@ -58,14 +58,14 @@ function CartItemRow({ item }: { item: CartItem }) {
             </span>
             <button
               onClick={() => updateQuantity(item.id, item.quantity + 1)}
-              className="flex size-6 items-center justify-center rounded-full transition-colors hover:bg-background"
+              className="relative flex size-9 items-center justify-center rounded-full transition-colors after:absolute after:-inset-1 after:content-[''] hover:bg-background sm:size-6"
             >
               <Plus className="size-3" />
             </button>
           </div>
           <button
             onClick={() => removeItem(item.id)}
-            className="text-muted-foreground transition-colors hover:text-destructive"
+            className="-m-3.5 p-3.5 text-muted-foreground transition-colors hover:text-destructive"
           >
             <Trash2 className="size-4" />
           </button>

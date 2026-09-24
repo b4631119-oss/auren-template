@@ -143,7 +143,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-8 lg:col-span-7">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 md:col-span-8 lg:col-span-7">
               <div className="animate-in space-y-6 delay-200 duration-1000 ease-in-out fill-mode-both fade-in slide-in-from-bottom-8">
                 <p className="text-xs font-bold tracking-[0.2em] text-foreground/50 uppercase">
                   {t("sitemap")}

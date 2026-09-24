@@ -194,7 +194,7 @@ export default function ProductOverview({
                                 <Button
                                     variant="outline"
                                     size="icon"
-                                    className="size-10 shrink-0 rounded-full border-border cursor-pointer"
+                                    className="size-11 shrink-0 rounded-full border-border cursor-pointer"
                                     onClick={handleWishlist}
                                 >
                                     <Heart
