@@ -42,13 +42,13 @@ export async function generateMetadata({
       title: t("homeTitle"),
       description: t("homeDescription"),
       url: "https://auren.example",
-      images: [{ url: "/assets/about/hero.png", width: 1200, height: 630, alt: "Auren Store" }],
+      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Auren Store" }],
     },
     twitter: {
       card: "summary_large_image",
       title: t("homeTitle"),
       description: t("homeDescription"),
-      images: ["/assets/about/hero.png"],
+      images: ["/opengraph-image"],
     },
   }
 }
