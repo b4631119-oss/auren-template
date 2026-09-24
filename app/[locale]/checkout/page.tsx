@@ -16,9 +16,12 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
+import { useCurrency } from "@/components/currency-context"
+import { formatPrice } from "@/lib/currency"
 
 export default function CheckoutPage() {
   const { items, total, itemCount } = useCart()
+  const { currency } = useCurrency()
   const t = useTranslations("checkout")
 
   return (
@@ -98,7 +101,7 @@ export default function CheckoutPage() {
                         {item.name}
                       </h4>
                       <p className="mt-1 text-sm font-semibold">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        {formatPrice(item.price * item.quantity, currency)}
                       </p>
                     </div>
                   </div>
@@ -110,7 +113,7 @@ export default function CheckoutPage() {
               <div className="space-y-4">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">{t("subtotal")}</span>
-                  <span className="font-medium">${total.toFixed(2)}</span>
+                  <span className="font-medium">{formatPrice(total, currency)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">
@@ -120,14 +123,14 @@ export default function CheckoutPage() {
                 </div>
                 <div className="flex justify-between text-sm font-medium text-green-600">
                   <span>{t("discount")}</span>
-                  <span>-$0.00</span>
+                  <span>-{formatPrice(0, currency)}</span>
                 </div>
 
                 <Separator className="bg-border" />
 
                 <div className="flex justify-between text-xl font-bold tracking-tight">
                   <span>{t("total")}</span>
-                  <span>${total.toFixed(2)}</span>
+                  <span>{formatPrice(total, currency)}</span>
                 </div>
               </div>
 

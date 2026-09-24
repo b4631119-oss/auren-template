@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/components/theme-provider"
 import { CartProvider } from "@/components/cart-context"
 import { WishlistProvider } from "@/components/wishlist-context"
+import { CurrencyProvider } from "@/components/currency-context"
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -24,8 +25,31 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "meta" })
 
   return {
-    title: t("homeTitle"),
+    metadataBase: new URL("https://auren.example"),
+    title: {
+      default: t("homeTitle"),
+      template: "%s",
+    },
     description: t("homeDescription"),
+    keywords: [
+      "Auren", "Auren Store", "AUREN", "auren", "Auren Store",
+      "интернет-магазин", "одежда", "аксессуары", "электроника", "уход",
+      "online store", "fashion", "lifestyle"
+    ],
+    openGraph: {
+      type: "website",
+      siteName: "Auren Store",
+      title: t("homeTitle"),
+      description: t("homeDescription"),
+      url: "https://auren.example",
+      images: [{ url: "/assets/about/hero.png", width: 1200, height: 630, alt: "Auren Store" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("homeTitle"),
+      description: t("homeDescription"),
+      images: ["/assets/about/hero.png"],
+    },
   }
 }
 
@@ -65,7 +89,9 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <ThemeProvider>
             <CartProvider>
-              <WishlistProvider>{children}</WishlistProvider>
+              <WishlistProvider>
+                <CurrencyProvider>{children}</CurrencyProvider>
+              </WishlistProvider>
             </CartProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

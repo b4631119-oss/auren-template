@@ -26,6 +26,8 @@ import { useCart } from "@/components/cart-context"
 import { useWishlist } from "@/components/wishlist-context"
 import { CartSidebar } from "@/components/cart-sidebar"
 import { LocaleSwitch } from "@/components/locale-switch"
+import { CurrencySwitch } from "@/components/currency-switch"
+import { ThemeSwitch } from "@/components/theme-switch"
 
 export type NavigationSection = {
   title: string
@@ -221,13 +223,17 @@ const Header = ({ navigationData, className }: HeaderProps) => {
           {/* Desktop CTA */}
           <div className="flex gap-4">
             <LocaleSwitch />
+            <CurrencySwitch />
+            <ThemeSwitch />
             <AuthButtons 
               onCartClick={() => setIsCartOpen(true)}
               className="hidden lg:flex" 
             />
 
-            <div className="lg:hidden flex items-center gap-2">
+            <div className="hidden max-lg:flex max-lg:md:hidden items-center gap-2">
               <LocaleSwitch />
+              <CurrencySwitch />
+              <ThemeSwitch />
               <Button
                 variant="outline"
                 size="icon"
@@ -264,6 +270,11 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                   <div className="flex flex-col gap-12 overflow-y-auto px-6 pb-6">
                     <div className="flex flex-col gap-8">
                       <SheetTitle className="sr-only">Menu</SheetTitle>
+                      <div className="flex items-center gap-3">
+                        <LocaleSwitch />
+                        <CurrencySwitch />
+                        <ThemeSwitch />
+                      </div>
                       <NavigationMenu
                         orientation="vertical"
                         className="flex-none items-start"

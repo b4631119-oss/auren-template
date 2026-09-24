@@ -12,6 +12,8 @@ import { Link } from "@/i18n/navigation"
 import { useLocalizedProductName } from "@/lib/product-names"
 import { useCart } from "@/components/cart-context"
 import { useWishlist } from "@/components/wishlist-context"
+import { useCurrency } from "@/components/currency-context"
+import { formatPrice } from "@/lib/currency"
 
 export interface ProductCardProps {
   id?: string
@@ -46,6 +48,7 @@ export function ProductCard({
 }: ProductCardProps) {
   const { addItem } = useCart()
   const { toggleWishlist, isInWishlist } = useWishlist()
+  const { currency } = useCurrency()
   const t = useTranslations("productListing")
   const displayName = useLocalizedProductName(slug || "", name)
 
@@ -164,11 +167,11 @@ export function ProductCard({
           </div>
           <div className="flex items-center gap-2">
             <small className="text-lg font-medium text-foreground">
-              ${price}
+              {formatPrice(price, currency)}
             </small>
             {originalPrice && (
               <small className="text-lg font-medium text-muted-foreground line-through">
-                ${originalPrice}
+                {formatPrice(originalPrice, currency)}
               </small>
             )}
           </div>

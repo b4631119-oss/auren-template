@@ -14,6 +14,8 @@ import { Minus, Plus, Trash2, ShoppingBag, ArrowUpRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 import { useLocalizedProductName } from "@/lib/product-names"
+import { useCurrency } from "@/components/currency-context"
+import { formatPrice } from "@/lib/currency"
 
 interface CartSidebarProps {
   open: boolean
@@ -22,6 +24,7 @@ interface CartSidebarProps {
 
 function CartItemRow({ item }: { item: CartItem }) {
   const { removeItem, updateQuantity } = useCart()
+  const { currency } = useCurrency()
   const displayName = useLocalizedProductName(item.slug || "", item.name)
 
   return (
@@ -38,7 +41,9 @@ function CartItemRow({ item }: { item: CartItem }) {
           <h4 className="line-clamp-1 font-medium text-foreground">
             {displayName}
           </h4>
-          <p className="text-sm font-semibold">${item.price.toFixed(2)}</p>
+          <p className="text-sm font-semibold">
+            {formatPrice(item.price, currency)}
+          </p>
         </div>
         <div className="flex items-center justify-between">
           <div className="flex items-center rounded-full border border-border bg-muted/50 p-1">
@@ -72,6 +77,7 @@ function CartItemRow({ item }: { item: CartItem }) {
 
 export function CartSidebar({ open, onOpenChange }: CartSidebarProps) {
   const { items, total, itemCount } = useCart()
+  const { currency } = useCurrency()
   const t = useTranslations("checkout")
 
   return (
@@ -125,7 +131,9 @@ export function CartSidebar({ open, onOpenChange }: CartSidebarProps) {
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">{t("subtotal")}</span>
-                    <span className="font-medium">${total.toFixed(2)}</span>
+                    <span className="font-medium">
+                      {formatPrice(total, currency)}
+                    </span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">
@@ -136,7 +144,7 @@ export function CartSidebar({ open, onOpenChange }: CartSidebarProps) {
                   <Separator className="my-2" />
                   <div className="flex justify-between text-lg font-bold tracking-tight">
                     <span>{t("total")}</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>{formatPrice(total, currency)}</span>
                   </div>
                 </div>
                 <Link
