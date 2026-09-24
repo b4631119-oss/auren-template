@@ -42,6 +42,19 @@
     "menu": "Меню",
     "copyright": "© 2026 Auren Store"
   },
+  "bottomNav": {
+    "label": "Основная навигация",
+    "home": "Главная",
+    "catalog": "Каталог",
+    "search": "Поиск",
+    "wishlist": "Избранное",
+    "cart": "Корзина",
+    "searchTitle": "Поиск товаров",
+    "searchPlaceholder": "Что ищете?",
+    "searchHint": "Введите название товара",
+    "searchEmpty": "Ничего не найдено",
+    "close": "Закрыть"
+  },
   "localeSwitch": {
     "label": "Язык"
   },

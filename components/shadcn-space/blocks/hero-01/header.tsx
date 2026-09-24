@@ -221,31 +221,33 @@ const Header = ({ navigationData, className }: HeaderProps) => {
           </div>
 
           {/* Desktop CTA */}
-          <div className="flex gap-4">
-            <LocaleSwitch />
-            <CurrencySwitch />
-            <ThemeSwitch />
+          <div className="flex items-center gap-4">
+            <div className="hidden items-center gap-2 md:flex">
+              <LocaleSwitch />
+              <CurrencySwitch />
+              <ThemeSwitch />
+            </div>
             <AuthButtons 
               onCartClick={() => setIsCartOpen(true)}
               className="hidden lg:flex" 
             />
 
-            <div className="hidden max-lg:flex max-lg:md:hidden items-center gap-2">
-              <LocaleSwitch />
-              <CurrencySwitch />
-              <ThemeSwitch />
-              <Button
-                variant="outline"
-                size="icon"
-                className="size-10 rounded-full border-border/40 bg-background/60 shadow-sm backdrop-blur-md"
-                onClick={() => setIsCartOpen(true)}
-              >
-                <ShoppingBag className="size-4" />
-                <span className="sr-only">{t("cart")}</span>
-              </Button>
+            {/* Mobile/tablet: only cart (tablet) + burger; switches live in the burger menu, cart/search also in BottomNav */}
+            <div className="flex items-center gap-2 lg:hidden">
+              <div className="hidden md:block lg:hidden">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="size-11 rounded-full border-border/40 bg-background/60 shadow-sm backdrop-blur-md"
+                  onClick={() => setIsCartOpen(true)}
+                >
+                  <ShoppingBag className="size-4" />
+                  <span className="sr-only">{t("cart")}</span>
+                </Button>
+              </div>
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger id="mobile-menu-trigger">
-                  <span className="block rounded-full border border-border p-2 bg-background/60 backdrop-blur-md">
+                  <span className="flex size-11 items-center justify-center rounded-full border border-border bg-background/60 backdrop-blur-md">
                     <Menu width={20} height={20} />
                     <span className="sr-only">{t("menu")}</span>
                   </span>
@@ -261,7 +263,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                       <Logo className="gap-2" />
                     </Link>
                     <SheetClose id="mobile-menu-close">
-                      <span className="block rounded-full border border-border p-2.5">
+                      <span className="flex size-11 items-center justify-center rounded-full border border-border">
                         <X width={16} height={16} />
                       </span>
                     </SheetClose>
@@ -270,7 +272,7 @@ const Header = ({ navigationData, className }: HeaderProps) => {
                   <div className="flex flex-col gap-12 overflow-y-auto px-6 pb-6">
                     <div className="flex flex-col gap-8">
                       <SheetTitle className="sr-only">Menu</SheetTitle>
-                      <div className="flex items-center gap-3">
+                      <div className="flex w-fit items-center gap-2 rounded-full border border-border/50 bg-muted/30 p-1.5">
                         <LocaleSwitch />
                         <CurrencySwitch />
                         <ThemeSwitch />

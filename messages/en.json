@@ -42,6 +42,19 @@
     "menu": "Menu",
     "copyright": "© 2026 Auren Store"
   },
+  "bottomNav": {
+    "label": "Primary navigation",
+    "home": "Home",
+    "catalog": "Shop",
+    "search": "Search",
+    "wishlist": "Wishlist",
+    "cart": "Cart",
+    "searchTitle": "Search products",
+    "searchPlaceholder": "What are you looking for?",
+    "searchHint": "Type a product name",
+    "searchEmpty": "No products found",
+    "close": "Close"
+  },
   "localeSwitch": {
     "label": "Language"
   },
