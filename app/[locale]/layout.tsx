@@ -11,6 +11,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { CartProvider } from "@/components/cart-context"
 import { WishlistProvider } from "@/components/wishlist-context"
 import { CurrencyProvider } from "@/components/currency-context"
+import { ConsoleGreeting } from "@/components/console-greeting"
 
 const siteUrl = "https://auren.example"
 
@@ -113,7 +114,10 @@ export default async function LocaleLayout({
           <ThemeProvider>
             <CartProvider>
               <WishlistProvider>
-                <CurrencyProvider>{children}</CurrencyProvider>
+                <CurrencyProvider>
+                  {children}
+                  <ConsoleGreeting />
+                </CurrencyProvider>
               </WishlistProvider>
             </CartProvider>
           </ThemeProvider>
