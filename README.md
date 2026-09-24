@@ -1,8 +1,7 @@
 # Auren
 
-<!-- TODO: добавьте файл screenshot.png в корень репозитория -->
 <div align="center">
-  <img src="./screenshot.png" alt="Auren — главная страница" width="800" />
+  <img src="./public/screenshot.png" alt="Auren — главная страница" width="800" />
 </div>
 
 <div align="center">
