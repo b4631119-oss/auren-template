@@ -104,8 +104,6 @@ pnpm lint        # ESLint
 
 ## 📸 Скриншоты
 
-<!-- TODO: добавьте скриншоты в docs/screenshots/ -->
-
 <table>
   <tr>
     <td align="center"><strong>Светлая тема</strong></td>
