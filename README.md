@@ -1,226 +1,125 @@
-# E-commerce Template with shadcn/ui & Next.js
+# Auren
 
-A modern, production-ready e-commerce template built with Next.js 16, React 19, Tailwind CSS, and shadcn/ui components. This template includes pre-built pages and components for building a complete online store.
+<!-- TODO: добавьте файл screenshot.png в корень репозитория -->
+<div align="center">
+  <img src="./screenshot.png" alt="Auren — главная страница" width="800" />
+</div>
 
-## Features
+<div align="center">
 
-✨ **Modern Stack**
-- Next.js 16 with App Router and Turbopack
-- React 19 with latest hooks
-- TypeScript for type safety
-- Tailwind CSS 4 with modern styling
-- shadcn/ui components
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#-лицензия)
 
-🛍️ **E-commerce Features**
-- Product catalog and product detail pages
-- Shopping cart functionality
-- Wishlist management
-- Product categories
-- User authentication (login/register)
-- Checkout page
-- Responsive design
+</div>
 
-🎨 **UI & UX**
-- Beautiful, customizable components
-- Dark mode support with next-themes
-- Smooth animations with Motion
-- Toast notifications with Sonner
-- Professional layout components
+**Auren** — минималистичный интернет-магазин моды и электроники: два языка, три валюты, светлая и тёмная тема из коробки. **[Открыть демо →](https://auren.example)**
 
-## Prerequisites
+## ✨ Возможности
 
-Before you begin, ensure you have the following installed:
-- **Node.js** 20.x or higher
-- **pnpm** 9.x or higher (or npm/yarn if you prefer)
+- 🛍️ **Каталог товаров** — фильтры по категориям, страницы товаров с галереей, рейтингом и отзывами покупателей
+- 🛒 **Корзина и избранное** — выезжающая панель корзины, wishlist, всё сохраняется в `localStorage`
+- 💳 **Пошаговый чекаут** — информация → доставка → оплата, анимированный прогресс и подтверждение заказа
+- 🌍 **Два языка RU / EN** — маршруты `/` и `/en/*` на next-intl, переключение без перезагрузки страницы
+- 💱 **Три валюты KGS / USD / RUB** — конвертация всех цен на лету, курсы задаются в одном месте (`lib/currency.ts`)
+- 🌓 **Светлая и тёмная тема** — next-themes без мигания при загрузке, светлая по умолчанию
+- 📱 **Адаптивная вёрстка** — от 320px до десктопа; переключатели языка, валюты и темы аккуратно спрятаны в мобильное меню
+- 🔍 **SEO из коробки** — уникальные `title`/`description` и OpenGraph для каждой страницы и локали, `robots.txt` и `sitemap.xml`
 
-### Install pnpm (if not already installed)
+## 🛠️ Стек
+
+| Технология | Зачем |
+| --- | --- |
+| [![Next.js 16](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org) | App Router, SSG-маршруты, метаданные |
+| [![React 19](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev) | Server и Client Components |
+| [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org) | Строгая типизация во всём проекте |
+| [![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com) | Стилизация на утилитах и CSS-переменных тем |
+| [![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-latest-black)](https://ui.shadcn.com) | Доступные компоненты: dropdown, sheet, accordion |
+| [![next-intl](https://img.shields.io/badge/next--intl-4-blue)](https://next-intl.dev) | i18n RU/EN: словари, маршрутизация, плюрализация |
+| [![next-themes](https://img.shields.io/badge/next--themes-0.4-purple)](https://github.com/pacocoursey/next-themes) | Переключение темы классом на `<html>` |
+
+## 📁 Структура проекта
+
+```
+├── app/                  # Маршруты App Router
+│   ├── [locale]/         # Локализованные страницы (ru — по умолчанию, en — /en/*)
+│   ├── icon.svg          # Favicon: тёмный квадрат с буквой A
+│   ├── robots.ts         # Генерация robots.txt
+│   └── sitemap.ts        # Генерация sitemap.xml
+├── assets/               # Логотип бренда
+├── components/           # React-компоненты
+│   ├── ui/               # Базовые компоненты shadcn/ui
+│   ├── cart-context.tsx  # Состояние корзины (localStorage)
+│   ├── currency-*        # Контекст и переключатель валют
+│   ├── locale-switch.tsx # Переключатель RU/EN
+│   ├── theme-*           # Провайдер и кнопка темы
+│   └── shadcn-space/     # Секции страниц: hero, футер, карточки, чекаут
+├── hooks/                # Общие React-хуки
+├── i18n/                 # Конфигурация next-intl: routing, navigation, request
+├── lib/                  # Каталог товаров, курсы валют, хелперы локализации
+├── messages/             # Словари интерфейса: ru.json и en.json
+├── proxy.ts              # Middleware next-intl (Next 16)
+└── public/               # Статика: изображения товаров и секций
+```
+
+## 🚀 Быстрый старт
+
+Требуется [Node.js 20+](https://nodejs.org) и [pnpm](https://pnpm.io).
+
+1. Клонируйте репозиторий:
+
+   ```bash
+   git clone https://github.com/your-username/auren.git
+   cd auren
+   ```
+
+2. Установите зависимости:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Переменные окружения не требуются — шаблон работает из коробки. При необходимости создайте `.env.local`:
+
+   ```bash
+   # NEXT_PUBLIC_SITE_URL=https://your-domain.com
+   ```
+
+4. Запустите dev-сервер:
+
+   ```bash
+   pnpm dev
+   ```
+
+   Откройте [http://localhost:3000](http://localhost:3000) — русский интерфейс, английский доступен по `/en`.
+
+Другие команды:
 
 ```bash
-npm install -g pnpm
+pnpm build       # production-сборка
+pnpm start       # запуск собранного приложения
+pnpm typecheck   # проверка типов
+pnpm lint        # ESLint
 ```
 
-Or using other package managers:
-```bash
-# Using npm
-npm install -g pnpm
+## 📸 Скриншоты
 
-# Using Homebrew (macOS)
-brew install pnpm
+<!-- TODO: добавьте скриншоты в docs/screenshots/ -->
 
-# Using Scoop (Windows)
-scoop install pnpm
-```
+<table>
+  <tr>
+    <td align="center"><strong>Светлая тема</strong></td>
+    <td align="center"><strong>Тёмная тема</strong></td>
+    <td align="center"><strong>Мобильная версия</strong></td>
+  </tr>
+  <tr>
+    <td><img src="./docs/screenshots/light.png" alt="Светлая тема" /></td>
+    <td><img src="./docs/screenshots/dark.png" alt="Тёмная тема" /></td>
+    <td><img src="./docs/screenshots/mobile.png" alt="Мобильная версия" /></td>
+  </tr>
+</table>
 
-## Installation
+## 📄 Лицензия
 
-### 1. Clone the Repository
-
-```bash
-git clone <repository-url>
-cd ecommerce-shadcn-nextjs-template
-```
-
-### 2. Install Dependencies
-
-```bash
-pnpm install
-```
-
-Or if you prefer npm:
-```bash
-npm install
-```
-
-Or if you prefer yarn:
-```bash
-yarn install
-```
-
-## Running the Project
-
-### Development Server
-
-Start the development server with hot-reload enabled:
-
-```bash
-pnpm dev
-```
-
-Or with npm:
-```bash
-npm run dev
-```
-
-The application will be available at `http://localhost:3000`
-
-### Production Build
-
-Build the project for production:
-
-```bash
-pnpm build
-```
-
-Start the production server:
-
-```bash
-pnpm start
-```
-
-## Available Scripts
-
-```bash
-# Start development server with Turbopack
-pnpm dev
-
-# Build for production
-pnpm build
-
-# Start production server
-pnpm start
-
-# Run ESLint
-pnpm lint
-
-# Format code with Prettier
-pnpm format
-
-# Type check with TypeScript
-pnpm typecheck
-```
-
-## Project Structure
-
-```
-├── app/                          # Next.js App Router
-│   ├── (site)/                   # Main site routes
-│   │   ├── page.tsx             # Home page
-│   │   ├── about/               # About page
-│   │   ├── contact/             # Contact page
-│   │   ├── faq/                 # FAQ page
-│   │   ├── shop/                # Shop/Products listing
-│   │   │   └── [slug]/          # Product detail page
-│   │   └── wishlist/            # Wishlist page
-│   ├── checkout/                # Checkout page
-│   ├── login/                   # Login page
-│   ├── register/                # Register page
-│   ├── layout.tsx               # Root layout
-│   └── globals.css              # Global styles
-├── components/                  # React components
-│   ├── ui/                      # shadcn/ui components
-│   ├── shadcn-space/           # Custom layout components
-│   │   ├── blocks/             # Feature blocks
-│   │   └── animations/         # Reusable animations
-│   ├── cart-context.tsx        # Cart state management
-│   ├── wishlist-context.tsx    # Wishlist state management
-│   └── theme-provider.tsx      # Theme configuration
-├── assets/                      # Static assets
-│   └── logo/                    # Logo component
-├── hooks/                       # Custom React hooks
-├── lib/                         # Utility functions
-│   ├── data.ts                 # Sample data
-│   └── utils.ts                # Helper utilities
-├── public/                      # Static files
-│   └── assets/                 # Images and media
-├── package.json                # Project dependencies
-├── tailwind.config.ts          # Tailwind configuration
-├── tsconfig.json               # TypeScript configuration
-└── next.config.mjs             # Next.js configuration
-```
-
-## Technology Stack
-
-- **Framework:** Next.js 16.1.7
-- **UI Library:** React 19.2.4
-- **Styling:** Tailwind CSS 4.2.1
-- **Component Library:** shadcn/ui
-- **Language:** TypeScript 5.9.3
-- **Icons:** Lucide React & Iconify
-- **Animations:** Motion
-- **Carousel:** Embla Carousel
-- **Notifications:** Sonner
-- **Theme:** next-themes
-- **Linting:** ESLint 9
-- **Formatting:** Prettier
-
-## Environment Setup
-
-Create a `.env.local` file in the root directory if needed for environment variables:
-
-```bash
-# .env.local
-# Add any environment variables here
-```
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## Getting Started Guide
-
-1. **Install dependencies:** `pnpm install`
-2. **Start development server:** `pnpm dev`
-3. **Open in browser:** Navigate to `http://localhost:3000`
-4. **Start customizing:** Edit files in the `app/` and `components/` directories
-5. **Add your products:** Update data in `lib/data.ts`
-6. **Customize styling:** Modify Tailwind configuration and global styles
-
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-For questions or issues, please open an issue in the repository or contact the maintainers.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
----
-
-**Happy coding! 🚀**
+Проект распространяется по лицензии [MIT](./LICENSE).
