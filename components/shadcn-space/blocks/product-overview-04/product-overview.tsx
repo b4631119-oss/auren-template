@@ -10,9 +10,13 @@ import { toast } from "sonner";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useCart } from "@/components/cart-context";
 import { useWishlist } from "@/components/wishlist-context";
+import { useCurrency } from "@/components/currency-context";
+import { formatPrice } from "@/lib/currency";
 import { useTranslations } from "next-intl";
+import { useLocalizedProductDetails } from "@/lib/product-details";
 
 export interface ProductOverviewData {
+    id?: string;
     brand: string;
     title: string;
     rating: number;
@@ -54,11 +58,23 @@ export default function ProductOverview({
     } = product;
     const [quantity, setQuantity] = React.useState(1);
     const t = useTranslations("product");
+    const tBrand = useTranslations("brand");
+    const localizedDetails = useLocalizedProductDetails(product.id ?? "");
+    const resolvedDescription = localizedDetails?.description ?? description;
+    const accordionItems =
+        product.accordionInfo && product.accordionInfo.length > 0
+            ? (localizedDetails?.accordion?.length
+                ? product.accordionInfo.map((item, i) =>
+                    localizedDetails.accordion![i] ?? item
+                )
+                : product.accordionInfo)
+            : product.accordionInfo;
     const [selectedSize, setSelectedSize] = React.useState(sizes.find(s => !s.outOfStock) || sizes[0]);
     const { addItem } = useCart();
     const { toggleWishlist, isInWishlist } = useWishlist();
 
     const currentOriginalPrice = selectedSize.price;
+    const { currency } = useCurrency();
 
     const isLiked = isInWishlist(title);
 
@@ -148,7 +164,7 @@ export default function ProductOverview({
                             <div className="flex items-start justify-between gap-4">
                                 <div className="flex flex-col gap-3">
                                     <span className="text-muted-foreground text-sm font-medium">
-                                        {brand}
+                                        {tBrand("premium")}
                                     </span>
                                     <h2 className="text-foreground text-3xl font-semibold leading-tight tracking-tight lg:text-4xl">
                                         {title}
@@ -191,17 +207,17 @@ export default function ProductOverview({
                             </div>
 
                             <p className="text-muted-foreground text-base leading-relaxed">
-                                {description}
+                                {resolvedDescription}
                             </p>
 
                             <div className="flex items-center gap-4 py-1">
                                 <span className="text-3xl font-semibold">
-                                    ${discountedPrice.toFixed(2)}
+                                    {formatPrice(discountedPrice, currency)}
                                 </span>
                                 {discount !== undefined && (
                                     <>
                                         <span className="text-muted-foreground text-xl font-semibold line-through opacity-40">
-                                            ${currentOriginalPrice.toFixed(2)}
+                                            {formatPrice(currentOriginalPrice, currency)}
                                         </span>
                                         <Badge
                                             variant="secondary"
@@ -274,13 +290,13 @@ export default function ProductOverview({
                                 className="w-full rounded-full h-12 font-medium cursor-pointer hover:bg-primary/80"
                                 size="lg"
                             >
-                                {t("buyAt", { price: `$${(discountedPrice * quantity).toFixed(2)}` })}
+                                {t("buyAt", { price: formatPrice(discountedPrice * quantity, currency) })}
                             </Button>
                         </div>
 
                         <div className="flex flex-col pt-2">
                             <Accordion className="w-full">
-                                {accordionInfo.map((item, index) => (
+                                {accordionItems?.map((item, index) => (
                                     <React.Fragment key={index}>
                                         <Separator className="bg-border" />
                                         <AccordionItem value={`item-${index}`} className="border-none">

@@ -86,7 +86,7 @@ export default function FAQPage() {
           <h1 className="text-4xl font-bold tracking-tight lg:text-6xl">
             {t("helpTitle")}{" "}
             <span className={cn("italic", instrumentSerif.className)}>
-              help
+              {t("helpTitleAccent")}
             </span>
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
@@ -183,7 +183,7 @@ export default function FAQPage() {
                   {t("emailSupportDesc")}
                 </p>
                 <a
-                  href="mailto:support@auren.com"
+                  href="mailto:hello@auren.com"
                   className="inline-flex items-center gap-2 text-sm font-bold transition-colors hover:text-primary"
                 >
                   {t("emailUs")} <ArrowUpRight className="size-4" />

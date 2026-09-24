@@ -24,16 +24,18 @@ import { useTranslations } from "next-intl"
 import { Link } from "@/i18n/navigation"
 
 const STEPS = ["Information", "Shipping", "Payment"]
+const STEP_COUNT = STEPS.length
 
 export function CheckoutForm() {
   const [currentStep, setCurrentStep] = useState(0)
   const { total, items, clearCart } = useCart()
   const [isCompleted, setIsCompleted] = useState(false)
   const t = useTranslations("checkout")
+  const tp = useTranslations("checkout.placeholders")
 
   const handleNext = (e: React.FormEvent) => {
     e.preventDefault()
-    if (currentStep < STEPS.length - 1) {
+    if (currentStep < STEP_COUNT - 1) {
       setCurrentStep(currentStep + 1)
       window.scrollTo({ top: 0, behavior: "smooth" })
     } else {
@@ -141,7 +143,7 @@ export function CheckoutForm() {
                 {t(`steps.${idx}`)}
               </span>
             </div>
-            {idx < STEPS.length - 1 && (
+            {idx < STEP_COUNT - 1 && (
               <div className="mx-4 -mt-6 h-[2px] w-12 bg-muted">
                 <motion.div
                   className="h-full bg-primary"
@@ -178,7 +180,7 @@ export function CheckoutForm() {
                     <Label htmlFor="email">{t("emailAddress")}</Label>
                     <Input
                       id="email"
-                      placeholder="email@example.com"
+                      placeholder={tp("email")}
                       required
                       className="h-12 rounded-xl"
                     />
@@ -209,12 +211,12 @@ export function CheckoutForm() {
                   </h3>
                 </div>
                 <div className="grid gap-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">{t("firstName")}</Label>
                       <Input
                         id="firstName"
-                        placeholder="John"
+                        placeholder={tp("firstName")}
                         required
                         className="h-12 rounded-xl"
                       />
@@ -223,27 +225,26 @@ export function CheckoutForm() {
                       <Label htmlFor="lastName">{t("lastName")}</Label>
                       <Input
                         id="lastName"
-                        placeholder="Doe"
+                        placeholder={tp("lastName")}
                         required
                         className="h-12 rounded-xl"
                       />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="address">{t("address")}</Label>
-                    <Input
-                      id="address"
-                      placeholder="123 Luxury Lane"
-                      required
+                    <Label htmlFor="address">{t("address")}</Label>                      <Input
+                        id="address"
+                        placeholder={tp("address")}
+                        required
                       className="h-12 rounded-xl"
                     />
                   </div>
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                     <div className="space-y-2">
                       <Label htmlFor="city">{t("city")}</Label>
                       <Input
                         id="city"
-                        placeholder="New York"
+                        placeholder={tp("city")}
                         required
                         className="h-12 rounded-xl"
                       />
@@ -252,7 +253,7 @@ export function CheckoutForm() {
                       <Label htmlFor="state">{t("state")}</Label>
                       <Input
                         id="state"
-                        placeholder="NY"
+                        placeholder={tp("state")}
                         required
                         className="h-12 rounded-xl"
                       />
@@ -261,7 +262,7 @@ export function CheckoutForm() {
                       <Label htmlFor="zip">{t("zip")}</Label>
                       <Input
                         id="zip"
-                        placeholder="10001"
+                        placeholder={tp("zip")}
                         required
                         className="h-12 rounded-xl"
                       />
@@ -319,7 +320,7 @@ export function CheckoutForm() {
                       </div>
                     </div>
                     <span className="text-sm font-bold text-muted-foreground">
-                      $25.00
+                      {t("expressShippingPrice")}
                     </span>
                   </div>
                 </div>
@@ -351,25 +352,24 @@ export function CheckoutForm() {
                       <div className="relative">
                         <Input
                           id="card"
-                          placeholder="0000 0000 0000 0000"
+                          placeholder={tp("card")}
                           required
                           className="h-12 rounded-xl pr-12"
                         />
                         <CreditCard className="absolute top-1/2 right-4 size-5 -translate-y-1/2 text-muted-foreground" />
                       </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
+                    </div>                      <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="expiry">{t("expiry")}</Label>
                         <Input
                           id="expiry"
-                          placeholder="MM/YY"
+                          placeholder={tp("expiry")}
                           required
                           className="h-12 rounded-xl"
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="cvv">CVV</Label>
+                        <Label htmlFor="cvv">{t("cvv")}</Label>
                         <div className="relative">
                           <Input
                             id="cvv"
@@ -407,7 +407,7 @@ export function CheckoutForm() {
             )}
           >
             <span className="relative z-10 transition-all duration-500">
-              {currentStep === STEPS.length - 1
+              {currentStep === STEP_COUNT - 1
                 ? t("completeOrder")
                 : t("continueNext")}
             </span>

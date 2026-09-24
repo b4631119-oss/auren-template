@@ -112,9 +112,7 @@ const ProductCategory = () => {
                   className="w-full max-w-67.5 shrink-0"
                 >
                   <Link
-                    href={`/shop?category=${encodeURIComponent(
-                      t(`categories.${category.id}`)
-                    )}`}
+                    href={`/shop?category=${encodeURIComponent(category.id)}`}
                     className="group flex items-center overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:border-primary/20"
                   >
                     {/* Image Container */}

@@ -12,6 +12,7 @@ import { Link } from "@/i18n/navigation"
 export default function WishlistPage() {
   const { wishlist } = useWishlist()
   const t = useTranslations("wishlist")
+  const tCategories = useTranslations("productCategories")
 
   if (wishlist.length === 0) {
     return (
@@ -83,7 +84,7 @@ export default function WishlistPage() {
                 price={item.price}
                 image={item.image}
                 slug={item.slug}
-                category={item.category}
+                category={tCategories.has(item.category) ? tCategories(item.category) : item.category}
                 rating={4.5} // Mock rating
                 reviews={12} // Mock reviews
               />

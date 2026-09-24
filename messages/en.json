@@ -6,13 +6,18 @@
     "aboutDescription": "Discover the story behind Auren Store—a brand built on quality, minimalism, and the pursuit of timeless style.",
     "contactTitle": "Contact Us | Auren Store",
     "contactDescription": "Get in touch with Auren Store for support, inquiries, or feedback.",
-    "faqTitle": "FAQ",
+    "faqTitle": "FAQ | Auren Store",
+    "faqDescription": "Answers about shipping, returns and payments at Auren Store.",
     "shopTitle": "Shop | Auren Store",
-    "shopDescription": "Auren Store's full collection of premium apparel, luxury accessories, and smart tech.",
+    "shopDescription": "Browse the full Auren Store collection: apparel, accessories, electronics and skincare.",
     "loginTitle": "Login | Auren Store",
     "loginDescription": "Login to your Auren Store account to manage your orders and profile.",
     "registerTitle": "Register | Auren Store",
     "registerDescription": "Create an Auren Store account to start shopping premium collections.",
+    "wishlistTitle": "Wishlist | Auren Store",
+    "wishlistDescription": "Your saved Auren Store picks — everything you loved in one place.",
+    "checkoutTitle": "Checkout | Auren Store",
+    "checkoutDescription": "Secure checkout, wishlist and everything between at Auren Store.",
     "productNotFoundTitle": "Product Not Found | Auren Store",
     "productTitleSuffix": "Auren Store"
   },
@@ -39,6 +44,9 @@
   },
   "localeSwitch": {
     "label": "Language"
+  },
+  "currencySwitch": {
+    "label": "Currency"
   },
   "hero": {
     "title": "Modern Style and Living",
@@ -143,7 +151,8 @@
     "a4": "Yes, Auren Store ships to over 50 countries worldwide. International shipping rates and times vary depending on the destination.",
     "q5": "Are my payments secure?",
     "a5": "Absolutely. We use industry-standard SSL encryption and secure payment processors like Stripe and PayPal to ensure your personal and financial information is always protected.",
-    "helpTitle": "How can we help you?",
+    "helpTitle": "How can we help",
+    "helpTitleAccent": "you?",
     "helpSubtitle": "Everything you need to know about our premium services, shipping policies, and more.",
     "stillQuestions": "Still have questions?",
     "stillQuestionsText": "Can't find the answer you're looking for? Our dedicated team is here to assist you with every step of your journey.",
@@ -223,6 +232,8 @@
     "or": "or sign in with",
     "email": "Email*",
     "password": "Password*",
+    "emailPlaceholder": "you@example.com",
+    "passwordPlaceholder": "Enter your password",
     "remember": "Remember this device",
     "forgot": "Forgot password?",
     "signIn": "Sign in",
@@ -238,6 +249,9 @@
     "name": "Name*",
     "email": "Email*",
     "password": "Password*",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "you@example.com",
+    "passwordPlaceholder": "Enter your password",
     "signUp": "Sign up",
     "haveAccount": "Already have an account?",
     "signIn": "Sign in"
@@ -295,7 +309,22 @@
     "shopCollection": "Shop Collection",
     "orderConfirmed": "Order Confirmed!",
     "orderConfirmedDesc": "Thank you for your purchase. We've sent a confirmation email to you, and your items will be shipped shortly.",
-    "continue": "Continue Shopping"
+    "continue": "Continue Shopping",
+    "placeholders": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "address": "123 Luxury Lane",
+      "city": "New York",
+      "state": "NY",
+      "zip": "10001",
+      "email": "email@example.com",
+      "card": "0000 0000 0000 0000",
+      "expiry": "MM/YY",
+"cvv": "123"
+    },
+    "emailField": "Email",
+    "cvv": "CVV",
+    "expressShippingPrice": "25.00"
   },
   "product": {
     "reviews": "reviews",
@@ -304,6 +333,141 @@
     "buyAt": "Buy at {price}",
     "addedToCart": "{name} added to cart",
     "quantity": "Quantity: {quantity}"
+  },
+  "productCategories": {
+    "Apparel": "Apparel",
+    "Accessories": "Accessories",
+    "Electronics": "Electronics",
+    "Bags": "Bags",
+    "Skincare": "Skincare",
+    "Audio": "Audio"
+  },
+  "productDetails": {
+    "auren-minimalist-watch": {
+      "description": "A sleek, minimalist timepiece for the modern professional. Genuine leather strap and a scratch-resistant sapphire crystal face.",
+      "accordion": [
+        { "title": "Material & Care", "content": "Genuine leather strap. Water resistant up to 50 m." },
+        { "title": "Shipping", "content": "Free shipping worldwide." }
+      ]
+    },
+    "signature-cotton-trench": {
+      "description": "A timeless classic, redefined for the modern wardrobe. Cotton trench coat with a minimalist design and premium stitching.",
+      "accordion": [
+        { "title": "Material & Care", "content": "100% organic cotton. Dry clean only." },
+        { "title": "Shipping", "content": "Free shipping worldwide." }
+      ]
+    },
+    "radiance-night-serum": {
+      "description": "Rejuvenate your skin overnight with Radiance Night Serum, infused with hyaluronic acid and vitamin C.",
+      "accordion": [
+        { "title": "How to use", "content": "Apply 2–3 drops to clean skin before bedtime." },
+        { "title": "Ingredients", "content": "Hyaluronic acid, vitamin C, aloe vera." }
+      ]
+    },
+    "auren-premium-headphones": {
+      "description": "Industry-leading noise cancellation and superior sound quality. Up to 30 hours of battery life.",
+      "accordion": [
+        { "title": "Features", "content": "Active Noise Cancellation, Bluetooth 5.0, 30h battery life." },
+        { "title": "What's in the box", "content": "Headphones, carrying case, USB-C cable." }
+      ]
+    },
+    "premium-leather-wallet": {
+      "description": "Handcrafted from top-grain leather with RFID protection — slim, yet roomy enough for your daily essentials."
+    },
+    "urban-utility-backpack": {
+      "description": "Built for the modern commuter: weather-resistant fabric, a padded laptop sleeve and pockets for everything that matters."
+    },
+    "essential-linen-shirt": {
+      "description": "A breathable linen shirt for warm days and easy, effortless style."
+    },
+    "smart-home-hub": {
+      "description": "Control your entire home with ease using the Auren Smart Home Hub. Compatible with all your favorite smart devices."
+    },
+    "tailored-minimalist-trouser": {
+      "description": "Premium tailored trousers with a minimalist silhouette, cut from quality neutral-stone fabric."
+    },
+    "minimalist-gold-bracelet": {
+      "description": "An elegant gold bracelet with a minimalist design — a quiet touch of luxury for any outfit."
+    },
+    "delicate-gold-necklace": {
+      "description": "A delicate minimalist necklace crafted from premium gold. A timeless piece for the modern jewelry collection."
+    },
+    "auren-phone-pro": {
+      "description": "The ultimate modern smartphone: sleek minimalist design with powerful performance."
+    },
+    "auren-air-earbuds": {
+      "description": "Premium wireless earbuds with industry-leading sound and a sleek charging case."
+    },
+    "premium-leather-tote": {
+      "description": "A sophisticated leather tote designed for daily functionality and timeless style."
+    },
+    "minimalist-crossbody-bag": {
+      "description": "Sleek and functional, this minimalist crossbody bag is the perfect companion for urban life."
+    },
+    "pure-essence-facewash": {
+      "description": "A premium minimalist facewash that gently cleanses and rejuvenates for a radiant complexion."
+    },
+    "ultra-hydrating-cream": {
+      "description": "Deeply hydrating cream with minimalist packaging and high-fidelity skincare ingredients."
+    },
+    "auren-audio-earbuds": {
+      "description": "Professional-grade audio earbuds with superior sound design and premium build quality."
+    },
+    "premium-wired-earphones": {
+      "description": "High-fidelity wired earphones with a minimalist design for pure audio enjoyment."
+    }
+  },
+  "reviews": {
+    "items": [
+      {
+        "name": "Sarah Johnson",
+        "date": "October 12, 2024",
+        "title": "Absolutely stunning quality",
+        "content": "The attention to detail on this piece is incredible. The fabric feels substantial yet soft, and the fit is exactly as described. Truly a premium experience."
+      },
+      {
+        "name": "Michael Chen",
+        "date": "September 28, 2024",
+        "title": "Minimalist perfection",
+        "content": "Exactly what I was looking for. Simple, elegant, and functional."
+      },
+      {
+        "name": "Elena Rodriguez",
+        "date": "September 15, 2024",
+        "title": "Great addition",
+        "content": "Love the aesthetic and the craftsmanship. Highly recommended!"
+      },
+      {
+      "name": "Sophia Williams",
+        "date": "August 22, 2024",
+        "title": "The perfect gift",
+        "content": "Bought this as a gift and it was a huge hit. Beautifully packaged."
+      },
+      {
+        "name": "David Smith",
+        "date": "August 30, 2024",
+        "title": "Exceeded expectations",
+        "content": "I was hesitant to order at first, but I'm so glad I did. The quality is top-tier and the design is timeless. Customer service was very helpful with sizing."
+      },
+      {
+        "name": "James Wilson",
+        "date": "August 10, 2024",
+        "title": "Quality you can feel",
+        "content": "You can immediately tell these aren't mass-produced. The weight and texture of the fabric just scream luxury. Recommended for anyone who values quality over quantity."
+      },
+      {
+        "name": "Isabella Martinez",
+        "date": "July 25, 2024",
+        "title": "Beautiful design",
+        "content": "A very thoughtful design. It took a few days longer to arrive."
+      },
+      {
+        "name": "Liam Thompson",
+        "date": "July 12, 2024",
+        "title": "My new daily essential",
+        "content": "This has quickly become my most-used item. Versatile enough for any occasion and the comfort is unmatched. Ordering more colors soon!"
+      }
+    ]
   },
   "productDetail": {
     "customerExperiences": "Customer Experiences",

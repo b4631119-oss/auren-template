@@ -96,7 +96,7 @@ const RegisterForm = () => {
                     <Input
                       id="text"
                       type="text"
-                      placeholder="enter your name"
+                      placeholder={t("namePlaceholder")}
                       required
                       className="dark:bg-background shadow-xs h-9"
                     />
@@ -111,7 +111,7 @@ const RegisterForm = () => {
                     <Input
                       id="email"
                       type="email"
-                      placeholder="example@shadcnspace.com"
+                      placeholder={t("emailPlaceholder")}
                       required
                       className="dark:bg-background shadow-xs h-9"
                     />
@@ -127,7 +127,7 @@ const RegisterForm = () => {
                     <Input
                       id="password"
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder={t("passwordPlaceholder")}
                       required
                       className="dark:bg-background shadow-xs h-9"
                     />

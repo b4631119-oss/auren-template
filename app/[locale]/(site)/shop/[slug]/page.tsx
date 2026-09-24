@@ -30,9 +30,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
   }
 
+  const tDetails = await getTranslations({ locale, namespace: "productDetails" })
+  const displayName = getProductName(locale, product.slug, product.name)
+
+  let description = product.description
+  if (tDetails.has(product.slug)) {
+    const entry = tDetails.raw(product.slug) as { description?: string } | undefined
+    if (entry?.description) {
+      description = entry.description
+    }
+  }
+
   return {
-    title: `${product.name} | ${t("productTitleSuffix")}`,
-    description: product.description,
+    title: `${displayName} | ${t("productTitleSuffix")}`,
+    description,
+    openGraph: {
+      type: "website",
+      title: `${displayName} | ${t("productTitleSuffix")}`,
+      description,
+      images: [{ url: product.image, alt: product.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [product.image],
+    },
   }
 }
 
@@ -125,6 +146,7 @@ export default async function ProductDetailPage({ params }: Props) {
   }
 
   const overviewData = {
+    id: product.id,
     brand: "AUREN PREMIUM",
     title: getProductName(locale, product.slug, product.name),
     rating: product.rating,
