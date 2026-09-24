@@ -320,7 +320,7 @@
       "email": "email@example.com",
       "card": "0000 0000 0000 0000",
       "expiry": "MM/YY",
-"cvv": "123"
+      "cvv": "123"
     },
     "emailField": "Email",
     "cvv": "CVV",

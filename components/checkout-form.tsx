@@ -232,10 +232,11 @@ export function CheckoutForm() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="address">{t("address")}</Label>                      <Input
-                        id="address"
-                        placeholder={tp("address")}
-                        required
+                    <Label htmlFor="address">{t("address")}</Label>
+                    <Input
+                      id="address"
+                      placeholder={tp("address")}
+                      required
                       className="h-12 rounded-xl"
                     />
                   </div>
@@ -358,7 +359,8 @@ export function CheckoutForm() {
                         />
                         <CreditCard className="absolute top-1/2 right-4 size-5 -translate-y-1/2 text-muted-foreground" />
                       </div>
-                    </div>                      <div className="grid grid-cols-2 gap-4">
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="expiry">{t("expiry")}</Label>
                         <Input
