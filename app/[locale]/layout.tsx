@@ -12,6 +12,25 @@ import { CartProvider } from "@/components/cart-context"
 import { WishlistProvider } from "@/components/wishlist-context"
 import { CurrencyProvider } from "@/components/currency-context"
 
+const siteUrl = "https://auren.example"
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Auren",
+  url: siteUrl,
+  creator: {
+    "@type": "Person",
+    name: "Bilolidin",
+    url: "https://portfolio-devroot.vercel.app",
+  },
+  author: {
+    "@type": "Person",
+    name: "Bilolidin",
+    url: "https://portfolio-devroot.vercel.app",
+  },
+}
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
@@ -86,6 +105,10 @@ export default async function LocaleLayout({
       )}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NextIntlClientProvider>
           <ThemeProvider>
             <CartProvider>
