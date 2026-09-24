@@ -254,9 +254,36 @@ const Footer = () => {
           </div>
 
           <div className="flex animate-in flex-col items-center justify-between gap-6 border-t border-border/50 pt-12 delay-500 duration-1000 ease-in-out fill-mode-both fade-in slide-in-from-bottom-8 sm:flex-row">
-            <p className="text-sm font-medium text-muted-foreground">
-              {t("copyright")}
-            </p>
+            <div className="flex flex-col items-center gap-3 sm:items-start">
+              <p className="text-sm font-medium text-muted-foreground">
+                {t("copyright")}
+              </p>
+              {/* Author credit */}
+              <p className="text-xs text-muted-foreground">
+                {t.rich("madeWith", {
+                  author: (chunks) => (
+                    <a
+                      href="https://portfolio-devroot.vercel.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                    >
+                      {chunks}
+                    </a>
+                  ),
+                  github: (chunks) => (
+                    <a
+                      href="https://github.com/b4631119-oss"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                    >
+                      {chunks}
+                    </a>
+                  ),
+                })}
+              </p>
+            </div>
             <div className="flex items-center gap-8">
               <Link
                 href="#"
